@@ -8,6 +8,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-html-build"
   grunt.loadNpmTasks "grunt-mocha"
+  grunt.loadNpmTasks "grunt-http-server"
 
   ###
   # Creates the test env for crafty.
@@ -214,3 +215,14 @@ module.exports = (grunt) ->
             ]
           styles:
             bundle: ["build/css/**/*.css"]
+
+    "http-server":
+      dev:
+        root: "build/",
+        port: 3000,
+        host: "127.0.0.1",
+        cache: 1,
+        showDir : true,
+        autoIndex: true,
+        defaultExt: "html",
+        runInBackground: false
