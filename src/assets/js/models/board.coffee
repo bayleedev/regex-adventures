@@ -46,11 +46,8 @@ Crafty.c "Board",
     for l, level of board
       for y, row of level
         for x, cell of row
-          type = Tile.fromLetter(cell)
-          if type
-            Crafty.e("Tile, #{type}").at(x,y - 1,l)
-          else if cell.length > 1
-            Crafty.e("Tile, #{cell}").at(x,y - 1,l)
+          if type = Tile.fromLetter(cell)
+            Crafty.e("Tile, #{type}").at(x,y - 1,Number(l))
 
   load_level: (name) ->
     @load(@levels[name])
@@ -61,10 +58,17 @@ Crafty.c "Board",
   tile_height: ->
     @map_grid.tile.height
 
-  # If a level is stacked on top of another,
-  # How much higher does it need to be?
-  tile_level: ->
+  z_height: ->
     @map_grid.tile.level
+
+  # what level is a specific grid at?
+  level: ->
+    results = []
+    for id in Crafty(type)
+      item = Crafty(id)
+      at = item.at()
+      results.push(item) if at.x is x and at.y is y
+    results
 
   grid_width: ->
     @map_grid.width

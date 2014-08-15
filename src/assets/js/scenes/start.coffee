@@ -1,4 +1,5 @@
 Crafty.scene "Start", ->
+
   game.board().load_level('one')
 
   Crafty.e("Title").at(0, 1).text "Regex Adventures"

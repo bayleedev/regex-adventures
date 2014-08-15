@@ -5,13 +5,15 @@ Crafty.c "Tile",
   init: ->
     @requires("DOM, 2D")
 
-  at: (x, y, level = 0) ->
+  at: (x, y, z = @z) ->
     board = game.board()
     if x? and y?
       @attr
         x: x * board.tile_width()
-        y: y * board.tile_height() - level * board.tile_level()
+        y: (y * board.tile_height()) - (z * board.z_height())
+        z: z
       @
     else
       x: @x / board.tile_width()
-      y: @y / board.tile_height() - level * board.tile_level()
+      y: (@y + z * board.z_height()) / board.tile_height()
+      z: z
