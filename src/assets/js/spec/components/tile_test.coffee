@@ -9,4 +9,4 @@ describe 'Tile Entity', ->
 
   describe '#at', ->
     it 'returns the coordinates', ->
-      expect(subject.at()).to.be.equal(x: 1, y: 1, z: 0)
+      expect(subject.at()).to.deep.equal(x: 1, y: 1, z: 0)

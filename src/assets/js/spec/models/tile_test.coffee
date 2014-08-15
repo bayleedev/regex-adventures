@@ -18,6 +18,6 @@ describe 'Tile Class', ->
 
   describe '.tile', ->
     it 'gives back details about the tile', ->
-      expect(subject.tile('bar')).to.equal
+      expect(subject.tile('bar')).to.deep.equal
         solid: true
         symbol: 'b'
