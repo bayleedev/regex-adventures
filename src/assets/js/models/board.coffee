@@ -38,7 +38,9 @@ Crafty.c "Board",
       for y, row of level
         for x, cell of row
           if type = Tile.fromLetter(cell)
-            Crafty.e("Tile, #{type}").at(x,y - 1,Number(l))
+            e = Crafty.e("Tile, #{type}").at(x,y - 1,Number(l))
+            if Tile.tile(type).solid
+              e.requires('Solid')
 
   load_level: (name) ->
     @load(@levels[name])
@@ -53,7 +55,7 @@ Crafty.c "Board",
     @map_grid.tile.level
 
   # what level is a specific grid at?
-  level: (x, y, type = 'Tile') ->
+  level: (x, y, type = 'Tile Solid') ->
     max = 0
     for id in Crafty(type)
       item = Crafty(id)
