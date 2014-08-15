@@ -19,7 +19,7 @@ module.exports = (grunt) ->
     "copy:img",
     "copy:css",
     "copy:test",
-    "coffee:build",
+    "coffee:build_dev",
     "coffee:build_tests",
     "htmlbuild:build",
     "mocha:test",
@@ -71,7 +71,7 @@ module.exports = (grunt) ->
       test:
         src: ['build/test.html']
         options:
-          run: true
+          run: false
     watch:
       dev:
         files: ["src/**/*"]
