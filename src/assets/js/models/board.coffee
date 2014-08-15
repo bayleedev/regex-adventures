@@ -18,7 +18,7 @@ Crafty.c "Board",
         []
         []
         []
-        ['', '', '', '', '', '!']
+        ['1', '', '', '', '', '!']
       ]
     ]
 
@@ -38,9 +38,12 @@ Crafty.c "Board",
       for y, row of level
         for x, cell of row
           if type = Tile.fromLetter(cell)
-            e = Crafty.e("Tile, #{type}").at(x,y - 1,Number(l))
+            e = Crafty.e("Tile, #{type}").at(x, y-1, Number(l))
             if Tile.tile(type).solid
               e.requires('Solid')
+          if type = Character.fromLetter(cell)
+            Crafty.e("Character, #{type}").at(x, y-1, Number(l))
+    @
 
   load_level: (name) ->
     @load(@levels[name])

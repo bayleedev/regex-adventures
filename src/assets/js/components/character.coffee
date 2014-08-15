@@ -1,7 +1,7 @@
-Crafty.c "Tile",
+Crafty.c "Character",
 
   init: ->
-    @requires("DOM, 2D")
+    @requires("DOM, 2D, Fourway")
 
   at: (x, y, z = @z) ->
     board = game.board()
