@@ -3,31 +3,31 @@ Crafty.c "Board",
   levels:
     one: [
       [
-        ['d', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd']
-        ['d', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd']
-        ['d', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd']
-        ['d', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd']
-        ['d', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd']
-        ['d', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd']
-        ['d', 'd', 's', 's', 's', 's', 's', 'd', 'd', 'd']
-        ['d', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd']
+        ['d', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd']
+        ['d', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd']
+        ['d', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd']
+        ['d', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd']
+        ['d', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd']
+        ['d', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd']
+        ['d', 'd', 'd', 's', 's', 's', 's', 's', 'd', 'd', 'd']
+        ['d', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd', 'd']
       ]
       [
-        ['g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g']
-        ['g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g']
-        ['g', 'g', 's', 's', 's', 's', 's', 'g', 'g', 'g']
-        ['g', 'g', 's', 'w', 'w', 'w', 's', 'g', 'g', 'g']
-        ['g', 'g', 's', 'w', 's', 'w', 's', 'g', 'g', 'g']
-        ['g', 'g', 's', 'w', 'w', 'w', 's', 'g', 'g', 'g']
-        ['g', 'g', 's', 's', 's', 's', 's', 'g', 'g', 'g']
-        ['g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g']
+        ['g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g']
+        ['g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g']
+        ['g', 'g', 'g', 's', 's', 's', 's', 's', 'g', 'g', 'g']
+        ['g', 'g', 'g', 's', 'w', 'w', 'w', 's', 'g', 'g', 'g']
+        ['g', 'g', '/', 's', 'w', 's', 'w', 's', '\\', 'g', 'g']
+        ['g', 'g', 'g', 's', 'w', 'w', 'w', 's', 'g', 'g', 'g']
+        ['g', 'g', 'g', 's', 's', 's', 's', 's', 'g', 'g', 'g']
+        ['g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g']
       ]
       [
         []
         []
         []
         []
-        ['', '', '', '', 'selector']
+        ['', '', '', '', '', '!']
       ]
     ]
 
@@ -35,31 +35,20 @@ Crafty.c "Board",
     @requires('Model')
 
   map_grid:
-    width: 10
+    width: 11
     height: 8
     tile:
-      bleed_width: 101
       width: 101
-      bleed_height: 171
       height: 83
+      level: 40
 
   load: (board) ->
     for l, level of board
       for y, row of level
         for x, cell of row
-          console.log x, y, cell
-          if cell == 'g'
-            Crafty.e("Tile, grass_block").at(x,y - 1,l)
-          else if cell == 'd'
-            Crafty.e("Tile, dirt_block").at(x,y - 1,l)
-          else if cell == 'w'
-            Crafty.e("Tile, water_block").at(x,y - 1,l)
-          else if cell == 's'
-            Crafty.e("Tile, stone_block").at(x,y - 1,l)
-          else if cell == 're'
-            Crafty.e("Tile, ramp_east").at(x,y - 1,l)
-          else if cell == 'rw'
-            Crafty.e("Tile, ramp_west").at(x,y - 1,l)
+          type = Tile.fromLetter(cell)
+          if type
+            Crafty.e("Tile, #{type}").at(x,y - 1,l)
           else if cell.length > 1
             Crafty.e("Tile, #{cell}").at(x,y - 1,l)
 
@@ -71,6 +60,11 @@ Crafty.c "Board",
 
   tile_height: ->
     @map_grid.tile.height
+
+  # If a level is stacked on top of another,
+  # How much higher does it need to be?
+  tile_level: ->
+    @map_grid.tile.level
 
   grid_width: ->
     @map_grid.width

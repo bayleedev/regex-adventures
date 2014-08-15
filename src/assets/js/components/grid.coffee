@@ -1,4 +1,5 @@
 Crafty.c "Grid",
+
   init: ->
     board = game.board()
     @attr
