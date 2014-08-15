@@ -53,13 +53,13 @@ Crafty.c "Board",
     @map_grid.tile.level
 
   # what level is a specific grid at?
-  level: ->
-    results = []
+  level: (x, y, type = 'Tile') ->
+    max = 0
     for id in Crafty(type)
       item = Crafty(id)
       at = item.at()
-      results.push(item) if at.x is x and at.y is y
-    results
+      max = Math.max(max, at.z) if at.x is x and at.y is y
+    max
 
   grid_width: ->
     @map_grid.width

@@ -69,3 +69,35 @@ describe 'Board', ->
 
       it 'second item gives specific created item', ->
         expect(subject.at(1, 1)[1]).to.equal(second)
+
+  describe '#level', ->
+
+    describe 'given no items', ->
+      it 'is as level 0', ->
+        expect(subject.level(1, 1)).to.equal(0)
+
+    describe 'given a single item', ->
+      beforeEach (done) ->
+        Crafty.e('Tile').at(1, 1, 1)
+        done()
+
+      it 'is as level 1', ->
+        expect(subject.level(1, 1)).to.equal(1)
+
+    describe 'given a single item in a different area', ->
+      beforeEach (done) ->
+        Crafty.e('Tile').at(1, 1, 2)
+        done()
+
+      it 'is as level 0', ->
+        expect(subject.level(1, 2)).to.equal(0)
+
+    describe 'given lots of items', ->
+      beforeEach (done) ->
+        Crafty.e('Tile').at(2, 2, 1)
+        Crafty.e('Tile').at(2, 2, 2)
+        Crafty.e('Tile').at(1, 2, 3)
+        done()
+
+      it 'is as level 0', ->
+        expect(subject.level(2, 2)).to.equal(2)
