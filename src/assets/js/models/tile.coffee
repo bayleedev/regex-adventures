@@ -22,6 +22,9 @@ class Tile
     selector:
       solid: false
       symbol: '!'
+    star:
+      solid: false
+      symbol: '*'
 
   @fromLetter: (letter) ->
     for key, value of @tiles
