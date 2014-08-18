@@ -98,7 +98,7 @@ module.exports = (grunt) ->
     copy:
       img:
         files: [
-          cwd: "./src/assets/img/"
+          cwd: "./src/img/"
           expand: true
           flatten: false
           src: ["**/*"]
@@ -107,7 +107,7 @@ module.exports = (grunt) ->
         ]
       css:
         files: [
-          cwd: "src/assets/css/"
+          cwd: "src/css/"
           expand: true
           flatten: false
           src: ["**/*.css", "!vendor/mocha.css"]
@@ -116,7 +116,7 @@ module.exports = (grunt) ->
         ]
       js:
         files: [
-          cwd: "src/assets/js/"
+          cwd: "src/js/"
           expand: true
           flatten: false
           src: ["**/*.js", "!vendor/chai.js", "!vendor/mocha.js"]
@@ -125,7 +125,7 @@ module.exports = (grunt) ->
         ]
       test:
         files: [
-          cwd: "src/assets/"
+          cwd: "src/"
           expand: true
           flatten: false
           src: [
@@ -141,13 +141,13 @@ module.exports = (grunt) ->
       build:
         files:
           # Put CSS manifests here
-          "build/css/main.css": ["src/assets/css/main.less"]
+          "build/css/main.css": ["src/css/main.less"]
 
     coffee:
       build_tests:
         files: [
           expand: true
-          cwd: "src/assets/js/"
+          cwd: "src/js/"
           src: ["spec/**/*.coffee"]
           dest: "build/js/"
           ext: ".js"
@@ -155,7 +155,7 @@ module.exports = (grunt) ->
       build_dev:
         files: [
           expand: true
-          cwd: "src/assets/js/"
+          cwd: "src/js/"
           src: ["**/*.coffee"]
           dest: "build/js/"
           ext: ".js"
@@ -165,10 +165,10 @@ module.exports = (grunt) ->
           join: true
         files: [
           'build/js/core.js': [
-            "src/assets/js/game.coffee",
-            "src/assets/js/models/**/*.coffee",
-            "src/assets/js/**/*.coffee",
-            "!src/assets/js/spec/**/*.coffee",
+            "src/js/game.coffee",
+            "src/js/models/**/*.coffee",
+            "src/js/**/*.coffee",
+            "!src/js/spec/**/*.coffee",
           ],
         ]
 
