@@ -40,7 +40,7 @@ Crafty.c "Board",
           if type = Tile.fromLetter(cell)
             e = Crafty.e("Tile, #{type}").at(x, y-1, Number(l))
             if Tile.tile(type).solid
-              e.requires('Solid')
+              e.requires('PartialSolid')
           if type = Character.fromLetter(cell)
             Crafty.e("Character, #{type}").at(x, y-1, Number(l))
     @
@@ -54,7 +54,7 @@ Crafty.c "Board",
   tile_height: ->
     @map_grid.tile.height
 
-  z_height: ->
+  level_height: ->
     @map_grid.tile.level
 
   # what level is a specific grid at?
@@ -63,7 +63,7 @@ Crafty.c "Board",
     for id in Crafty(type)
       item = Crafty(id)
       at = item.at()
-      max = Math.max(max, at.z) if at.x is x and at.y is y
+      max = Math.max(max, at.level) if at.x is x and at.y is y
     max
 
   grid_width: ->

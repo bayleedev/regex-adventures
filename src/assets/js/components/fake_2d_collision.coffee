@@ -31,9 +31,9 @@ Crafty.c "Fake2DCollision",
       continue if isNaN(key)
       component = Crafty(value)
       rect2 = component.solid_at()
-      return true if component != @ and  # Dont match itself
-        component.at().z is @at().z and  # Same z level
-        rect1.x < rect2.x + rect2.w and  # Basic collision detection
+      return true if component != @ and          # Dont match itself
+        component.at().level is @at().level and  # Same level
+        rect1.x < rect2.x + rect2.w and          # Basic collision detection
         rect1.x + rect1.w > rect2.x and
         rect1.y < rect2.y + rect2.h and
         rect1.h + rect1.y > rect2.y
