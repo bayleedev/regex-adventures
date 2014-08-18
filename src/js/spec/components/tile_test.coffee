@@ -3,8 +3,7 @@ subject = null
 describe 'Tile Entity', ->
 
   beforeEach (done) ->
-    subject = Crafty.e('Tile')
-    subject.at(1,1)
+    subject = Crafty.e('Tile').at(1, 1)
     done()
 
   describe '#at', ->
