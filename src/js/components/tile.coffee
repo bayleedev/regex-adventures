@@ -1,5 +1,7 @@
 Crafty.c "Tile",
 
+  level: 0
+
   init: ->
     @requires("DOM, 2D")
 
