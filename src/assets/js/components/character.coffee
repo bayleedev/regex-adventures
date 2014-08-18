@@ -3,7 +3,7 @@ Crafty.c "Character",
   init: ->
     @requires("DOM, 2D, Fourway, PartialSolid, Fake2DCollision")
     @fourway 6
-    @prevent_collision()
+    @on_hit 'Tile', @stop_movement, @start_movement
 
   at: (x, y, level = @level) ->
     board = game.board()
@@ -20,7 +20,7 @@ Crafty.c "Character",
 
   # PartialSolid determines I have this method
   solid_at: ->
-    x: @x + 7
+    x: @x + 19
     y: @y + 121
-    w: 77
+    w: 65
     h: 19
