@@ -119,7 +119,7 @@ module.exports = (grunt) ->
           cwd: "src/js/"
           expand: true
           flatten: false
-          src: ["**/*.js", "!vendor/chai.js", "!vendor/mocha.js"]
+          src: ["**/*.js", "!vendor/sinon.js", "!vendor/chai.js", "!vendor/mocha.js"]
           dest: "build/js"
           filter: "isFile"
         ]
@@ -129,6 +129,7 @@ module.exports = (grunt) ->
           expand: true
           flatten: false
           src: [
+            "js/vendor/sinon.js",
             "js/vendor/mocha.js",
             "js/vendor/chai.js",
             "css/vendor/mocha.css",
@@ -205,10 +206,12 @@ module.exports = (grunt) ->
               "!build/js/spec/**/*.js",
               "!build/js/vendor/mocha.js",
               "!build/js/vendor/chai.js",
+              "!build/js/vendor/sinon.js",
             ]
             test: [
               "build/js/vendor/mocha.js",
               "build/js/vendor/chai.js",
+              "build/js/vendor/sinon.js",
             ]
             spec: [
               "build/js/spec/**/*.js",
