@@ -23,7 +23,7 @@ Crafty.c "Board",
     ]
 
   init: ->
-    @requires('Model')
+    @requires('Model, Viewport')
 
   map_grid:
     width: 11
