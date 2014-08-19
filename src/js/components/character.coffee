@@ -1,9 +1,10 @@
 Crafty.c "Character",
 
   init: ->
-    @requires("DOM, 2D, Fourway, PartialSolid, Fake2DCollision")
+    @requires("DOM, 2D, Fourway, Solid, Fake2DCollision, TileZSwitcher")
     @fourway 6
     @on_hit 'Tile', @stop_movement, @start_movement
+    @z = 3
 
   at: (x, y, level = @level) ->
     board = game.board()
@@ -18,7 +19,7 @@ Crafty.c "Character",
       y: Math.round((@y + level * board.level_height()) / board.tile_height())
       level: level
 
-  # PartialSolid determines I have this method
+  # Solid determines I have this method
   solid_at: ->
     x: @x + 19
     y: @y + 121

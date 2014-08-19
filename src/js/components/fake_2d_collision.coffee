@@ -1,11 +1,5 @@
 Crafty.c "Fake2DCollision",
 
-  allowed:
-    right: true
-    left: true
-    up: true
-    down: true
-
   stop_movement: ->
     @disableControl()
     if @_movement
@@ -30,7 +24,7 @@ Crafty.c "Fake2DCollision",
   # Checks to see if I hit a component
   hit: (components) ->
     rect1 = @solid_at()
-    for key, value of Crafty("PartialSolid #{components}")
+    for key, value of Crafty("Solid #{components}")
       continue if isNaN(key)
       component = Crafty(value)
       rect2 = component.solid_at()

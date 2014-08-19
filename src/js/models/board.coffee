@@ -40,7 +40,7 @@ Crafty.c "Board",
           if type = Tile.fromLetter(cell)
             e = Crafty.e("Tile, #{type}").at(x, y-1, Number(l))
             if Tile.tile(type).solid
-              e.requires('PartialSolid')
+              e.requires('Solid')
           if type = Character.fromLetter(cell)
             Crafty.e("Character, #{type}").at(x, y-1, Number(l))
     @

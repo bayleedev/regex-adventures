@@ -18,7 +18,7 @@ Crafty.c "Tile",
       y: (@y + level * board.level_height()) / board.tile_height()
       level: level
 
-  # PartialSolid determines I have this method
+  # Solid determines I have this method
   solid_at: ->
     x: @x
     y: @y + 93
