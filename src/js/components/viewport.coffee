@@ -4,31 +4,26 @@ Crafty.c "Viewport",
   center: null
 
   percent:
-    x: 0.85
+    x: 0.90
     y: 0.85
 
-  center: (center) ->
+  center: (center, time = 75) ->
     @center = center
     center.bind "Move", =>
-      console.log 'calling'
-      @recenter() if @recenter_x() or @recenter_y()
+      @recenter(time)
 
-  recenter_y: ->
+  recenter: (time) ->
     height = Crafty.viewport.height
-    y = @center.y + Crafty.viewport.y
-    if height * (1 - @percent.y) > y or height * @percent.y < y
-      true
-    else
-      false
-
-  recenter_x: ->
     width = Crafty.viewport.width
-    x = @center.x + Crafty.viewport.x
-    if width * (1 - @percent.x) > x or width * @percent.x < x
-      true
-    else
-      false
-
-  # Not working...
-  recenter: ->
-    Crafty.viewport.centerOn(@center, 60)
+    solid = @center.solid_at()
+    speed = @center._speed
+    relative_x = solid.x + Crafty.viewport.x
+    relative_y = solid.y + Crafty.viewport.y
+    if width * (1 - @percent.x) > relative_x
+      Crafty.viewport.x += speed.x # Left
+    else if height * (1 - @percent.y) > relative_y
+      Crafty.viewport.y += speed.y # Top
+    else if width * @percent.x < relative_x + solid.w
+      Crafty.viewport.x -= speed.x # Right
+    else if height * @percent.y < relative_y + solid.h
+      Crafty.viewport.y -= speed.y # Bottom
