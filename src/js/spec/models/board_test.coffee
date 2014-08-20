@@ -73,8 +73,8 @@ describe 'Board', ->
   describe '#level', ->
 
     describe 'given no items', ->
-      it 'is as level 0', ->
-        expect(subject.level(1, 1)).to.equal(0)
+      it 'is as level -1', ->
+        expect(subject.level(1, 1)).to.equal(-1)
 
     describe 'given a single item', ->
       beforeEach (done) ->
@@ -89,8 +89,8 @@ describe 'Board', ->
         Crafty.e('Tile, Solid').at(1, 1, 2)
         done()
 
-      it 'is as level 0', ->
-        expect(subject.level(1, 2)).to.equal(0)
+      it 'is as level -1', ->
+        expect(subject.level(1, 2)).to.equal(-1)
 
     describe 'given lots of items', ->
       beforeEach (done) ->
@@ -107,5 +107,5 @@ describe 'Board', ->
         Crafty.e('Tile').at(1, 1, 1)
         done()
 
-      it 'is as level 1', ->
-        expect(subject.level(1, 1)).to.equal(0)
+      it 'is as level -1', ->
+        expect(subject.level(1, 1)).to.equal(-1)
