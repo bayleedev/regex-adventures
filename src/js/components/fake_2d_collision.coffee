@@ -24,12 +24,9 @@ Crafty.c "Fake2DCollision",
   # Checks to see if I hit a component
   hit: (components) ->
     rect1 = @solid_at()
-    for key, value of Crafty("Solid #{components}")
-      continue if isNaN(key)
-      component = Crafty(value)
+    for component in Crafty.find("Solid #{components}", {at: {level: @at().level}})
       rect2 = component.solid_at()
       return true if component != @ and          # Dont match itself
-        component.at().level is @at().level and  # Same level
         rect1.x < rect2.x + rect2.w and          # Basic collision detection
         rect1.x + rect1.w > rect2.x and
         rect1.y < rect2.y + rect2.h and

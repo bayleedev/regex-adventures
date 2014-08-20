@@ -1,4 +1,4 @@
-Crafty.find = (components, attributes) ->
+Crafty.find = (components, attributes = {}) ->
     items = []
     Crafty(components).each ->
       for key,value of attributes

@@ -2,7 +2,7 @@ Crafty.scene "Start", ->
 
   game.board().load_level('one')
 
-  center = Crafty(Crafty('Character')[0])
+  center = Crafty.first('Character')
   game.board().center(center)
 
   Crafty.e("Title").at(0, 1).text "Regex Adventures"

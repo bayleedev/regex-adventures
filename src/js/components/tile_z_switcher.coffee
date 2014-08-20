@@ -9,11 +9,9 @@ Crafty.c "TileZSwitcher",
 
   moved: ->
     return if @_at.y is @at().y
-    at = @_at = @at()
-    z = @z
-    Crafty("Tile").each ->
-      if @at().level is at.level
-        if @at().y > at.y
-          @attr(z: z + 1)
-        else
-          @attr(z: z - 1)
+    @_at = @at()
+    for item in Crafty.find("Tile", {at: {level: @at().level}})
+      if item.at().y > @at().y
+        item.attr(z: @z + 1)
+      else
+        item.attr(z: @z - 1)

@@ -92,8 +92,7 @@ Crafty.c "Board",
   # Return all items at a given coords
   at: (x, y, type = 'Solid Grid') ->
     results = []
-    for id in Crafty(type)
-      item = Crafty(id)
+    for item in Crafty.find(type)
       at = item.at()
       results.push(item) if at.x is x and at.y is y
     results

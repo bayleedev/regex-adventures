@@ -1,6 +1,6 @@
 subject1 = subject2 = null
 subject = (attrs) ->
-  target = Crafty.e("Fake2DCollision, Solid")
+  target = Crafty.e("Fake2DCollision, Solid, Tile")
   target.solid_at = ->
     attrs
   target
