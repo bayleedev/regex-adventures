@@ -1,14 +1,5 @@
 Crafty.c "Fake2DCollision",
 
-  stop_movement: ->
-    @disableControl()
-    if @_movement
-      @x -= @_movement.x
-      @y -= @_movement.y
-
-  start_movement: ->
-    @enableControl()
-
   on_hit: (components, callback_on, callback_off) ->
     just_hit = false
     @bind "EnterFrame", =>

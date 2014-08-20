@@ -1,8 +1,9 @@
 Crafty.c "Character",
 
   init: ->
-    @requires("DOM, 2D, Fourway, Solid, Fake2DCollision, TileZSwitcher")
+    @requires("DOM, 2D, Fourway, Solid, Fake2DCollision, TileZSwitcher, EmptyCollision")
     @fourway 6
+    @on_empty_hit @stop_movement, @start_movement
     @on_hit 'Tile', @stop_movement, @start_movement
     @z = 3
 
@@ -25,3 +26,12 @@ Crafty.c "Character",
     y: @y + 121
     w: 65
     h: 19
+
+  stop_movement: ->
+    @disableControl()
+    if @_movement
+      @x -= @_movement.x
+      @y -= @_movement.y
+
+  start_movement: ->
+    @enableControl()

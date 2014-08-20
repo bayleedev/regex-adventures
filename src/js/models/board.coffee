@@ -18,7 +18,7 @@ Crafty.c "Board",
         []
         []
         []
-        ['', 's', '', '', '2', '!']
+        ['', 's', '', '2', '', '!']
       ]
     ]
 
@@ -59,7 +59,7 @@ Crafty.c "Board",
 
   # what level is a specific grid at?
   level: (x, y, type = 'Tile Solid') ->
-    max = 0
+    max = -1
     for item in Crafty.find(type, {at: {x, y}})
       at = item.at()
       max = Math.max(max, at.level) if at.x is x and at.y is y
