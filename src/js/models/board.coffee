@@ -60,8 +60,7 @@ Crafty.c "Board",
   # what level is a specific grid at?
   level: (x, y, type = 'Tile Solid') ->
     max = 0
-    for id in Crafty(type)
-      item = Crafty(id)
+    for item in Crafty.find(type, {at: {x, y}})
       at = item.at()
       max = Math.max(max, at.level) if at.x is x and at.y is y
     max
