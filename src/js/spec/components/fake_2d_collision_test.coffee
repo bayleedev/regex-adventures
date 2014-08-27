@@ -18,12 +18,12 @@ describe 'Fake 2D Collision', ->
       it 'does not hit', ->
         expect(subject1.hit()).to.equal(false)
 
-    describe 'two entities not near each other', ->
+    describe 'two entities near each other', ->
       beforeEach (done) ->
         subject1 = subject(x: 150, y: 150, w: 100, h: 100)
         done()
-      it 'does not hit', ->
-        expect(subject1.hit()).to.equal(false)
+      it 'hit', ->
+        expect(subject1.hit()).to.equal(true)
 
   describe '#on_hit', ->
 
