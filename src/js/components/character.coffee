@@ -1,11 +1,12 @@
 Crafty.c 'Character',
 
   init: ->
-    @requires('DOM, 2D, Fourway, Solid, Fake2DCollision, TileZSwitcher, EmptyCollision, Identifier')
+    @requires('DOM, 2D, Fourway, Solid, Fake2DCollision, TileZSwitcher, EmptyCollision, Identifier, SpeechBubble')
     @fourway 6
     @on_empty_hit @stop_movement, @start_movement
     @on_hit 'Tile', @stop_movement, @start_movement
     @identify 'color'
+    @set_bubble_text 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris accumsan leo eget lacus.'
     @z = 3
 
   at: (x, y, level = @level) ->

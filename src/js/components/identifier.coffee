@@ -9,13 +9,13 @@ Crafty.c 'Identifier',
       .attr
         h: 15
         w: 40
-        z: @z+5
-    @bind 'Move', @position
+        z: 100
+    @bind 'Move', @_position
 
   identify: (text) ->
     @identifier.text text
 
-  position: ->
+  _position: ->
     @identifier.attr
       x: @x+30
       y: @y+40
