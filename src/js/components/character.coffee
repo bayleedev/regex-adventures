@@ -1,10 +1,7 @@
 Crafty.c 'Character',
 
   init: ->
-    @requires('DOM, 2D, Fourway, Solid, Fake2DCollision, TileZSwitcher, EmptyCollision, Identifier, SpeechBubble')
-    @fourway 6
-    @on_empty_hit @stop_movement, @start_movement
-    @on_hit 'Tile', @stop_movement, @start_movement
+    @requires('DOM, 2D, Solid, Identifier, SpeechBubble')
     @identify 'color'
     @set_bubble_text 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris accumsan leo eget lacus.'
     @z = 3
