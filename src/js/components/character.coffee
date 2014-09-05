@@ -1,10 +1,11 @@
-Crafty.c "Character",
+Crafty.c 'Character',
 
   init: ->
-    @requires("DOM, 2D, Fourway, Solid, Fake2DCollision, TileZSwitcher, EmptyCollision")
+    @requires('DOM, 2D, Fourway, Solid, Fake2DCollision, TileZSwitcher, EmptyCollision, Identifier')
     @fourway 6
     @on_empty_hit @stop_movement, @start_movement
     @on_hit 'Tile', @stop_movement, @start_movement
+    @identify 'color'
     @z = 3
 
   at: (x, y, level = @level) ->
