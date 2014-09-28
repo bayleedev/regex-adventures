@@ -1,6 +1,6 @@
 Crafty.find = (components, attributes = {}) ->
     items = []
-    Crafty(components).each ->
+    Crafty(components.trim()).each ->
       for key,value of attributes
         if key is 'at'
           return if value.x? and value.x isnt @at().x

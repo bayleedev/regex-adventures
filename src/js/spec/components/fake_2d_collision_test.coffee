@@ -8,6 +8,8 @@ subject = (attrs) ->
 describe 'Fake 2D Collision', ->
 
   beforeEach (done) ->
+    Crafty('Grid, Tile').each ->
+      @destroy()
     subject1 = subject(x: 0, y: 0, w: 100, h: 100)
     subject2 = subject(x: 200, y: 200, w: 100, h: 100)
     done()

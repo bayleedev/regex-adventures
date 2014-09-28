@@ -13,7 +13,7 @@ Crafty.c "Fake2DCollision",
       @
 
   # Checks to see if I hit a component
-  hit: (components) ->
+  hit: (components = '') ->
     rect1 = @solid_at()
     for component in Crafty.find("Solid #{components}", {at: {level: @at().level}})
       rect2 = component.solid_at()
