@@ -66,6 +66,13 @@ module.exports = (grunt) ->
     "watch",
   ]
 
+  ###
+  # Does a development build, then watches for changes.
+  ###
+  grunt.registerTask "server", [
+    "http-server"
+  ]
+
   grunt.initConfig
     mocha:
       test:
